@@ -6,6 +6,12 @@ A collection of eslint configuration files for consistent development across Fak
 
 This package provides standardized eslint configurations that can be extended in your projects to ensure consistent eslint settings and development experience.
 
+## Installation
+
+```bash
+pnpm i --save-dev @faktion/tsconfig
+```
+
 ## Configurations
 
 - **`./base`** - Base configuration for JS/TS projects
