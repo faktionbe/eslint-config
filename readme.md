@@ -1,49 +1,32 @@
-# ESLINT-CONFIG-FAKTION
+# @faktion/eslint-config
 
-# install
+ESLint configurations for JavaScript and TypeScript projects.
 
-`npm install eslint@8.57.0 eslint-config-faktion@github:faktionbe/eslint-config-faktion prettier@3.3.2`
+## Configurations
 
-# .eslintrc.cjs node
+- **`./base`** - Base configuration for JS/TS projects
+- **`./react`** - React applications with Next.js support
+- **`./node`** - Node.js backend applications
 
-```
-module.exports = {
-  extends: ["faktion/node"],
-  parserOptions: {
-    project: "tsconfig.json",
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-};
-```
+## Usage
 
-# .eslintrc.cjs react
+```javascript
+// eslint.config.js
+import baseConfig from '@faktion/eslint-config/base';
+export default baseConfig;
 
-```
-module.exports = {
-  extends: ["faktion/react"],
-  parserOptions: {
-    project: "tsconfig.json",
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-};
+// For React
+import reactConfig from '@faktion/eslint-config/react';
+export default reactConfig;
+
+// For Node.js
+import nodeConfig from '@faktion/eslint-config/node';
+export default nodeConfig;
 ```
 
-# .eslintrc.cjs base
+## Features
 
-```
-module.exports = {
-  extends: ["faktion"],
-  parserOptions: {
-    project: "tsconfig.json",
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-};
-```
-
-# Roadmap
-
-- [ ] Bump eslint to v9
-- [ ] Publish on npm
+- TypeScript ESLint with strict rules
+- React and React Hooks support
+- JSX accessibility rules
+- Modern ESLint flat config format

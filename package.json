@@ -1,51 +1,25 @@
 {
-  "name": "eslint-config-faktion",
-  "packageManager": "npm@10.1.0",
-  "version": "1.0.0",
-  "license": "MIT",
-  "main": "index.js",
+  "name": "@faktion/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
   "exports": {
-    ".": "./index.js",
-    "./node": "./rules/node.eslint.js",
-    "./react": "./rules/react.eslint.js"
+    "./base": "./base.mjs",
+    "./react": "./react.mjs",
+    "./node": "./node.mjs"
   },
-  "author": {
-    "name": "Faktion",
-    "email": "admin@faktion.com"
-  },
-  "maintainers": [
-    {
-    "name": "kevindenys",
-    "email": "admin@faktion.com"
-  },
-  {
-    "name": "pieterjandebruyne",
-    "email": "admin@faktion.com"
-  }
-],
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "@babel/eslint-parser": "^7.24.7",
-    "@eslint/js": "^8.57.0",
-    "@types/eslint__js": "^8.42.3",
-    "@typescript-eslint/eslint-plugin": "^7.6.0",
-    "@typescript-eslint/parser": "^7.6.0",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-simple-import-sort": "^12.1.0",
-    "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
-  },
-  "peerDependencies": {
-    "eslint": ">= 8"
-  },
-  "engines": {
-    "node": "20.9.0",
-    "npm": ">=10.1.0"
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@next/eslint-plugin-next": "^15.3.4",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-turbo": "^2.5.4",
+    "globals": "^16.2.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
   }
 }

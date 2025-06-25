@@ -1,59 +1,35 @@
-module.exports = {
-  extends: ["./javascript.eslint.js", "airbnb-typescript", "prettier"],
-  plugins: ["@typescript-eslint"],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    sourceType: "module",
+import tsParser from "@typescript-eslint/parser";
+
+export default {
+  files: ["**/*.ts", "**/*.tsx"],
+  languageOptions: {
+    parserOptions: {
+      parser: tsParser,
+      requireConfigFile: false,
+      ecmaFeatures: {
+        jsx: true,
+      },
+      project: ["./tsconfig.json"],
+    },
   },
   rules: {
-    "consistent-return": "off",
-    "no-restricted-syntax": "off",
-    "no-nested-ternary": "off",
-    "no-useless-return": "off",
-    "max-classes-per-file": "off",
-    "no-continue": "off",
-    "no-plusplus": "off",
-    "import/extensions": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
-    "no-unneeded-ternary": "error",
-    "import/no-extraneous-dependencies": "off", // Could not get it working with turborepo top level node_modules
-    "no-process-env": "error", // Please use envVars approach now - see <root>readme.md
-    "@typescript-eslint/ban-types": "error",
     "@typescript-eslint/adjacent-overload-signatures": "error",
     "@typescript-eslint/ban-ts-comment": "error",
-    "no-constant-condition": "error",
     "@typescript-eslint/no-unnecessary-condition": "error",
-    "no-array-constructor": "off",
     "@typescript-eslint/no-array-constructor": "error",
-    "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": "error",
+    "@typescript-eslint/no-empty-object-type": "error",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-extra-non-null-assertion": "error",
-    "no-extra-semi": "off",
-    "@typescript-eslint/no-extra-semi": "error",
     "@typescript-eslint/no-inferrable-types": "error",
-    "no-loss-of-precision": "error",
     "@typescript-eslint/no-loss-of-precision": "error",
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-namespace": "error",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
-    "@typescript-eslint/no-non-null-assertion": "warn",
     "@typescript-eslint/no-this-alias": "error",
     "@typescript-eslint/no-unnecessary-type-constraint": "error",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        args: "all",
-        argsIgnorePattern: "^_",
-        caughtErrors: "all",
-        caughtErrorsIgnorePattern: "^_",
-        destructuredArrayIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
-        ignoreRestSiblings: true,
-      },
-    ],
+    "@typescript-eslint/prefer-optional-chain": "error",
     "@typescript-eslint/no-var-requires": "error",
     "@typescript-eslint/prefer-as-const": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
@@ -104,9 +80,18 @@ module.exports = {
     "@typescript-eslint/method-signature-style": ["error", "property"],
     "@typescript-eslint/naming-convention": [
       "error",
-      { format: ["camelCase", "PascalCase"], selector: "default" },
-      { format: ["PascalCase"], selector: "typeLike" },
-      { format: ["PascalCase", "UPPER_CASE"], selector: "enumMember" },
+      {
+        format: ["camelCase", "PascalCase"],
+        selector: "default",
+      },
+      {
+        format: ["PascalCase"],
+        selector: "typeLike",
+      },
+      {
+        format: ["PascalCase", "UPPER_CASE"],
+        selector: "enumMember",
+      },
       {
         format: ["camelCase"],
         leadingUnderscore: "allow",
@@ -125,18 +110,24 @@ module.exports = {
       {
         format: ["camelCase", "PascalCase", "UPPER_CASE"],
         modifiers: ["const"],
+        leadingUnderscore: "allow",
         selector: "variable",
       },
-      { format: null, selector: "classProperty" },
-      { format: null, selector: "objectLiteralProperty" },
-      { format: null, selector: "typeProperty" },
+      {
+        format: null,
+        selector: "classProperty",
+      },
+      {
+        format: null,
+        selector: "objectLiteralProperty",
+      },
+      {
+        format: null,
+        selector: "typeProperty",
+      },
       {
         selector: "interface",
         format: ["PascalCase"],
-        custom: {
-          regex: "^I[A-Z]",
-          match: true,
-        },
       },
     ],
     "@typescript-eslint/no-confusing-void-expression": "error",
@@ -144,7 +135,6 @@ module.exports = {
     "@typescript-eslint/no-for-in-array": "error",
     "@typescript-eslint/no-redeclare": "error",
     "@typescript-eslint/no-shadow": "error",
-    "@typescript-eslint/no-throw-literal": "error",
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
     "@typescript-eslint/no-unused-expressions": "error",
@@ -172,7 +162,22 @@ module.exports = {
       },
     ],
     "@typescript-eslint/unified-signatures": "error",
-    "class-methods-use-this": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        args: "all",
+        argsIgnorePattern: "^_",
+        caughtErrors: "all",
+        caughtErrorsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        ignoreRestSiblings: true,
+      },
+    ],
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-extraneous-class": "off",
+    "@typescript-eslint/no-invalid-void-type": "off",
   },
 };
