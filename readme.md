@@ -1,4 +1,4 @@
-# @faktion/eslint-config
+# @faktion-com/eslint-config
 
 A collection of eslint configuration files for consistent development across Faktion projects.
 
@@ -9,7 +9,7 @@ This package provides standardized eslint configurations that can be extended in
 ## Installation
 
 ```bash
-pnpm i --save-dev @faktion/tsconfig
+pnpm i --save-dev @faktion-com/tsconfig
 ```
 
 ## Configurations
@@ -22,14 +22,14 @@ pnpm i --save-dev @faktion/tsconfig
 
 ```javascript
 // eslint.config.js
-import baseConfig from '@faktion/eslint-config/base';
+import baseConfig from '@faktion-com/eslint-config/base';
 export default baseConfig;
 
 // For React
-import reactConfig from '@faktion/eslint-config/react';
+import reactConfig from '@faktion-com/eslint-config/react';
 export default reactConfig;
 
 // For Node.js
-import nodeConfig from '@faktion/eslint-config/node';
+import nodeConfig from '@faktion-com/eslint-config/node';
 export default nodeConfig;
 ```
