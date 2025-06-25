@@ -1,5 +1,5 @@
 {
-  "name": "@faktion/eslint-config",
+  "name": "@faktion-com/eslint-config",
   "version": "0.0.0",
   "type": "module",
   "private": false,
