@@ -17,6 +17,9 @@
     "react.mjs",
     "node.mjs"
   ],
+  "scripts": {
+    "release": "changeset publish"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
     "@eslint/js": "^9.29.0",
