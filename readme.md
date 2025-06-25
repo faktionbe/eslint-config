@@ -27,10 +27,3 @@ export default reactConfig;
 import nodeConfig from '@faktion/eslint-config/node';
 export default nodeConfig;
 ```
-
-## Features
-
-- TypeScript ESLint with strict rules
-- React and React Hooks support
-- JSX accessibility rules
-- Modern ESLint flat config format
