@@ -2,13 +2,19 @@
   "name": "@faktion/eslint-config",
   "version": "0.0.0",
   "type": "module",
-  "private": true,
+  "private": false,
   "exports": {
     "./base": "./base.mjs",
     "./react": "./react.mjs",
     "./node": "./node.mjs"
   },
+  "files": [
+    "base.mjs",
+    "react.mjs",
+    "node.mjs"
+  ],
   "devDependencies": {
+    "@changesets/cli": "^2.29.5",
     "@eslint/js": "^9.29.0",
     "@next/eslint-plugin-next": "^15.3.4",
     "eslint": "^9.29.0",

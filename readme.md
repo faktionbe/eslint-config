@@ -1,6 +1,10 @@
 # @faktion/eslint-config
 
-ESLint configurations for JavaScript and TypeScript projects.
+A collection of eslint configuration files for consistent development across Faktion projects.
+
+## Overview
+
+This package provides standardized eslint configurations that can be extended in your projects to ensure consistent eslint settings and development experience.
 
 ## Configurations
 
