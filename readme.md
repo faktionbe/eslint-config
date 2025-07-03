@@ -9,7 +9,7 @@ This package provides standardized eslint configurations that can be extended in
 ## Installation
 
 ```bash
-pnpm i --save-dev @faktion-com/tsconfig
+pnpm i --save-dev @faktion-com/eslint-config
 ```
 
 ## Configurations
