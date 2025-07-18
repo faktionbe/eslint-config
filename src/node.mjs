@@ -8,4 +8,11 @@ export default [
       'no-useless-constructor': 'off',
     },
   },
+  {
+    languageOptions: {
+      globals: {
+        NodeJS: true,
+      },
+    },
+  },
 ];
