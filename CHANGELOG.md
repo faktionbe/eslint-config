@@ -1,5 +1,11 @@
 # @faktion-com/eslint-config
 
+## 0.0.3
+
+### Patch Changes
+
+- 45a0a04: missing nodejs global
+
 ## 0.0.2
 
 ### Patch Changes
