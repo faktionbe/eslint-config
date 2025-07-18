@@ -9,8 +9,10 @@ export default [
     },
   },
   {
-    globals: {
-      NodeJS: true,
+    languageOptions: {
+      globals: {
+        NodeJS: true,
+      },
     },
   },
 ];
