@@ -3,37 +3,76 @@ name: Release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      publish_only:
+        description: Publish packages on main (uses npm Trusted Publishing for release.yaml)
+        type: boolean
+        default: true
 
-permissions:
-  contents: write
-  pull-requests: write
-  actions: write
-  checks: write
+# Reset permissions; each job declares exactly what it needs.
+permissions: {}
+
+# Avoid two release runs racing each other on the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
+  select-mode:
     runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.select-mode.outputs.mode }}
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
         with:
-          version: 10
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org/
-          always-auth: true
+          node-version: 24
       - run: pnpm install --frozen-lockfile
+      - id: select-mode
+        uses: changesets/action/select-mode@v2
 
-      - name: Build
-        run: pnpm build
-
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
+  version:
+    if: needs.select-mode.outputs.mode == 'version'
+    needs: select-mode
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit version changes
+      pull-requests: write # open/update the "Version Packages" PR
+    steps:
+      - uses: actions/checkout@v4
         with:
-          publish: pnpm release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: pnpm install --frozen-lockfile
+      - uses: changesets/action/version@v2
+
+  publish:
+    if: |
+      (github.event_name == 'push' && needs.select-mode.outputs.mode == 'publish') ||
+      (github.event_name == 'workflow_dispatch' && inputs.publish_only)
+    needs: select-mode
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push git tags / create GitHub releases
+      id-token: write # npm Trusted Publishing (OIDC) – no NPM_TOKEN needed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - uses: changesets/action/publish@v2
+        with:
+          script: pnpm release
