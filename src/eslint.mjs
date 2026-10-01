@@ -171,5 +171,6 @@ export default {
     'no-continue': 'off',
     'no-plusplus': 'off',
     'import/extensions': 'off',
+    'import/no-empty-named-blocks': 'error'
   },
 };
